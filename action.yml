@@ -2,15 +2,36 @@
 name: "Akash On Github Actions"
 description: "Akash CLI Tools in GitHub. Publish a Project."
 inputs:
-  who-to-greet: # id of input
-    description: "Who to greet"
+  wallet-key: # id of input
+    description: "private key for the wallet to restore when the job runs"
     required: true
-    default: "World"
+  wallet-key-password:
+    description: "the wallet key password"
+    required: true
+  wallet-key-name:
+    description: "the name of the wallet key"
+    required: true
+  public-address:
+    description: "address of the wallet used for deployment, balance checks, etc"
+    required: true
+  deploy-cert:
+    description: "the certificate (pem) for deployment"
+    required: true
 outputs:
-  time: # id of output
-    description: "The time we greeted you"
+  cli-version: # id of output
+    description: "The version of the CLI running"
+  network:
+    description: "The network that the job is attached to"
+  network-version:
+    description: "The version of the Akash Network"
+  network-node:
+    description: "The network RPC node the job is using for chain communicating"
 runs:
   using: "docker"
   image: "Dockerfile"
   args:
-    - ${{ inputs.who-to-greet }}
+    - ${{ inputs.wallet-key }}
+    - ${{ inputs.wallet-key-password }}
+    - ${{ inputs.wallet-key-name }}
+    - ${{ inputs.public-address }}
+    - ${{ inputs.deploy-cert }}
