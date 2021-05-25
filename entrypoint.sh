@@ -10,11 +10,11 @@ echo "::set-output name=network-version::"$AKASH_VERSION
 echo "::set-output name=network-node::"$AKASH_NODE
 
 echo "$1" >> /tmp/akash_wallet_key.txt
-echo "$2" >> /tmp/akash_wallet_key_password.txt
-export AKASH_WALLET_KEY_PASSWORD=$(cat /tmp/akash_wallet_key_password.txt)
+echo $(echo "$2" | sed 's/./& /g') | sed 's/ //g' >> /tmp/akash_wallet_key_password.txt
+export AKASH_WALLET_KEY_PASSWORD=$(cat /run/secrets/LEVER_API_KEY)
 
 echo $AKASH_WALLET_KEY_PASSWORD
 
-yes $AKASH_WALLET_KEY_PASSWORD | akash keys import "AKASH_GROWTH_GROUP" /tmp/akash_wallet_key.txt
+yes  | akash keys import "AKASH_GROWTH_GROUP" /tmp/akash_wallet_key.txt
 
 # akash keys show "$AKASH_KEY_NAME
