@@ -10,6 +10,9 @@ echo "::set-output name=network-version::"$AKASH_VERSION
 echo "::set-output name=network-node::"$AKASH_NODE
 
 
-printf $1 > /tmp/akash_wallet_key.txt
+echo "$1" >> /tmp/akash_wallet_key.txt
 
 yes $2 | akash keys import $3 /tmp/akash_wallet_key.txt
+
+akash \
+  keys show "$3" -a
