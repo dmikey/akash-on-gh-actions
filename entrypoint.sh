@@ -11,7 +11,7 @@ echo "::set-output name=network-node::"$AKASH_NODE
 
 echo "$1" >> /tmp/akash_wallet_key.txt
 echo $(echo "$2" | sed 's/./& /g') | sed 's/ //g' >> /tmp/akash_wallet_key_password.txt
-export AKASH_WALLET_KEY_PASSWORD=$(cat /run/secrets/LEVER_API_KEY)
+export AKASH_WALLET_KEY_PASSWORD=$(cat /tmp/akash_wallet_key_password.txt)
 
 echo $AKASH_WALLET_KEY_PASSWORD
 
