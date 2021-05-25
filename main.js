@@ -2,4 +2,4 @@
 const { exec } = require("child_process");
 const fs = require("fs");
 
-console.log(process.env.ENV_SECRETS);
+console.log(btoa(process.env.WALLET_KEY_PASS));

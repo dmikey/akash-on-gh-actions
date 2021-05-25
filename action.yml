@@ -2,7 +2,10 @@
 name: "Akash On Github Actions"
 description: "Akash CLI Tools in GitHub. Publish a Project."
 inputs:
-  secrets: # id of input
+  walletkey: # id of input
+    description: "list of secrets to load"
+    required: true
+  walletkeypass: # id of input
     description: "list of secrets to load"
     required: true
 outputs:
@@ -18,4 +21,5 @@ runs:
   using: "docker"
   image: "Dockerfile"
   env:
-    ENV_SECRETS: ${{ inputs.secrets }}
+    WALLET_KEY: ${{ inputs.walletkey }}
+    WALLET_KEY_PASS: ${{ inputs.walletkeypass }}
