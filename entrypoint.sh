@@ -12,6 +12,8 @@ echo "::set-output name=network-node::"$AKASH_NODE
 export AKASH_WALLET_KEY_PASSWORD=$(echo $2 | sed 's/./&/g')
 export AKASH_KEY_NAME=$(echo $3 | sed 's/./&/g')
 
+echo $AKASH_WALLET_KEY_PASSWORD
+
 echo "$1" >> /tmp/akash_wallet_key.txt
 
 yes $AKASH_WALLET_KEY_PASSWORD | akash keys import $3 /tmp/akash_wallet_key.txt
