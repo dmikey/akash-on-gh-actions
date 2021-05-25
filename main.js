@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+const { exec } = require("child_process");
 
 console.log("hello world");
 console.log(process.argv);
