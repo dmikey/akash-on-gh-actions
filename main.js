@@ -5,7 +5,7 @@ console.log(process.argv);
 console.log(process.argv[3].length);
 console.log(process.argv[3].length);
 
-exec(`ls -a `, (error, stdout, stderr) => {
+exec(`akash version `, (error, stdout, stderr) => {
   if (error) {
     console.log(`error: ${error.message}`);
     return;
