@@ -17,10 +17,10 @@ outputs:
     description: "The version of the Akash Network"
   network-node:
     description: "The network RPC node the job is using for chain communicating"
-  run: |-
-    echo "${{inputs.walletkey}}" > key.key
-    echo "${{inputs.walletkeypass}}" | akash keys import AKASH_GROWTH_GROUP key.key
-    rm key.key
+run: |-
+  echo "${{inputs.walletkey}}" > key.key
+  echo "${{inputs.walletkeypass}}" | akash keys import AKASH_GROWTH_GROUP key.key
+  rm key.key
 
 # runs:
 #   using: "docker"
