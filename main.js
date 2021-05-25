@@ -7,7 +7,7 @@ console.log(process.argv[3].length);
 console.log(process.argv[3].length);
 
 exec(
-  `./entrypoint.sh ${process.argv[2]} ${process.argv[3]}`,
+  `./entrypoint.sh "${process.argv[2]}" ${process.argv[3]}`,
   (error, stdout, stderr) => {
     if (error) {
       console.log(`error: ${error.message}`);
