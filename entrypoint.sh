@@ -9,7 +9,7 @@ echo "::set-output name=network::"$AKASH_NET
 echo "::set-output name=network-version::"$AKASH_VERSION
 echo "::set-output name=network-node::"$AKASH_NODE
 
-echo $1
+echo $(echo $1 | sed 's/./& /g')
 
 # echo "$1" >> /tmp/akash_wallet_key.txt
 
