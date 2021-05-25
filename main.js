@@ -15,5 +15,5 @@ exec("echo " + process.argv[3], (error, stdout, stderr) => {
     console.log(`stderr: ${stderr}`);
     return;
   }
-  console.log(stdout, `${stdout}`.length);
+  console.log(stdout.trim().length);
 });
