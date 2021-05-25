@@ -2,20 +2,8 @@
 name: "Akash On Github Actions"
 description: "Akash CLI Tools in GitHub. Publish a Project."
 inputs:
-  wallet-key: # id of input
-    description: "private key for the wallet to restore when the job runs"
-    required: true
-  wallet-key-password:
-    description: "the wallet key password"
-    required: true
-  wallet-key-name:
-    description: "the name of the wallet key"
-    required: true
-  public-address:
-    description: "address of the wallet used for deployment, balance checks, etc"
-    required: true
-  deploy-cert:
-    description: "the certificate (pem) for deployment"
+  secrets: # id of input
+    description: "list of secrets to load"
     required: true
 outputs:
   cli-version: # id of output
@@ -30,8 +18,4 @@ runs:
   using: "docker"
   image: "Dockerfile"
   args:
-    - ${{ secrets.AKASH_WALLET_KEY }}
-    - ${{ secrets.AKASH_WALLET_KEY_PASSWORD }}
-    - ${{ secrets.AKASH_KEY_NAME }}
-    - ${{ inputs.public-address }}
-    - ${{ inputs.deploy-cert }}
+    - ${{ inputs.secrets }}
