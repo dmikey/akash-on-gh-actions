@@ -2,10 +2,10 @@
 name: "Akash On Github Actions"
 description: "Akash CLI Tools in GitHub. Publish a Project."
 inputs:
-  secrets: # id of input
+  walletkey: # id of input
     description: "list of secrets to load"
     required: true
-  test:
+  walletkeypass:
     description: "something"
 outputs:
   cli-version: # id of output
