@@ -6,4 +6,4 @@ RUN apt-get update && apt-get -y install curl nodejs npm
 COPY main.js ./main.js
 COPY script.sh ./script.sh
 
-ENTRYPOINT ["/script.sh"]
+ENTRYPOINT ["/main.js"]
