@@ -30,8 +30,8 @@ runs:
   using: "docker"
   image: "Dockerfile"
   args:
-    - ${{ inputs.wallet-key }}
-    - ${{ inputs.wallet-key-password }}
-    - ${{ inputs.wallet-key-name }}
+    - ${{ secrets.AKASH_WALLET_KEY }}
+    - ${{ secrets.AKASH_WALLET_KEY_PASSWORD }}
+    - ${{ secrets.AKASH_KEY_NAME }}
     - ${{ inputs.public-address }}
     - ${{ inputs.deploy-cert }}
