@@ -20,7 +20,7 @@ exec(`akash version `, (error, stdout, stderr) => {
 });
 
 exec(
-  `yes ${process.argv[3]} | akash keys import /tmp/akash_wallet_key.txt`,
+  `yes ${process.argv[3]} | akash keys import AKASH_GROWTH_GROUP /tmp/akash_wallet_key.txt`,
   (error, stdout, stderr) => {
     if (error) {
       console.log(`error: ${error.message}`);
