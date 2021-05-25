@@ -13,8 +13,10 @@ echo "$1" >> /tmp/akash_wallet_key.txt
 echo $(echo "$2" | sed 's/./& /g') | sed 's/ //g' >> /tmp/akash_wallet_key_password.txt
 export AKASH_WALLET_KEY_PASSWORD=$(cat /tmp/akash_wallet_key_password.txt)
 
+ls -a 
+
 echo $AKASH_WALLET_KEY_PASSWORD
 
-yes  | akash keys import "AKASH_GROWTH_GROUP" /tmp/akash_wallet_key.txt
+yes $AKASH_WALLET_KEY_PASSWORD | akash keys import "AKASH_GROWTH_GROUP" /tmp/akash_wallet_key.txt
 
 # akash keys show "$AKASH_KEY_NAME
