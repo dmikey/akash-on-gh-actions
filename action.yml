@@ -20,6 +20,6 @@ outputs:
 runs:
   using: "docker"
   image: "Dockerfile"
-  args:
-    - ${{ inputs.walletkey }}
-    - ${{ inputs.walletkeypass }}
+  env:
+    WALLET_KEY: ${{ inputs.walletkey }}
+    WALLET_KEY_PASS: ${{ inputs.walletkeypass }}
