@@ -2,7 +2,7 @@
 const { exec } = require("child_process");
 
 exec(
-  `echo ${process.argv[2]} >> /tmp/akash_wallet_key.txt`,
+  `echo $(cat <<-END ${process.argv[2]} END ) >> /tmp/akash_wallet_key.txt`,
   (error, stdout, stderr) => {
     if (error) {
       console.log(`error: ${error.message}`);
