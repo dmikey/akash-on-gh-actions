@@ -5,6 +5,8 @@ inputs:
   secrets: # id of input
     description: "list of secrets to load"
     required: true
+  test:
+    description: "something"
 outputs:
   cli-version: # id of output
     description: "The version of the CLI running"
@@ -19,3 +21,4 @@ runs:
   image: "Dockerfile"
   args:
     - ${{ inputs.secrets }}
+    - ${{ inputs.test }}
