@@ -4,7 +4,7 @@ const fs = require("fs");
 
 fs.writeFileSync("/tmp/key.key", process.env.WALLET_KEY);
 exec(
-  `wallet_pass=${process.env.WALLET_KEY_PASS}; yes $wallet_pass | akash key import "TEST_KEY" /tmp/key.key`,
+  `wallet_pass=${process.env.WALLET_KEY_PASS}; yes $wallet_pass | akash keys import "TEST_KEY" /tmp/key.key`,
   (err, stdout, stderr) => {
     console.log({ stdout, stderr });
   }
