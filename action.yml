@@ -38,4 +38,4 @@ runs:
       env:
         AKASH_HOME: /home/runner/.akash
       shell: bash
-      run: echo "${{inputs.AKASH_DEPLOY_CERTIFICATE}}" > ${{env.AKASH_HOME}}/$(akash keys show ${{inputs.AKASH_FROM}} --output=json | jq -r ".address").pem
+      run: akash keys list
