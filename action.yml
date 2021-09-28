@@ -28,6 +28,6 @@ runs:
       shell: bash
       run: |-
         export AKASH_WALLET_KEY_PASSWORD=$(echo "${{inputs.AKASH_WALLET_KEY_PASSWORD}}" | base64 -d)
-        echo AKASH_WALLET_KEY_PASSWORD
+        echo $AKASH_WALLET_KEY_PASSWORD
         echo "${{inputs.AKASH_WALLET_KEY}}" > key.key
         echo "$AKASH_WALLET_KEY_PASSWORD" | akash keys import ${{inputs.AKASH_FROM}} key.key --keyring-backend file
