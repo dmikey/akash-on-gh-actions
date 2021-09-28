@@ -1,21 +1,33 @@
-# Hello world docker action
+# Setup Akash CLI Action
 
-This action prints "Hello World" or "Hello" + the name of a person to greet to the log.
+Sets up the Akash CLI for Github Action use. Installs the latest Akash CLI, Imports Keys, and deployment Certificates.
 
 ## Inputs
 
-### `who-to-greet`
+### `GITHUB_TOKEN`
 
-**Required** The name of the person to greet. Default `"World"`.
+**Required** The github runner token
 
-## Outputs
+### `AKASH_WALLET_KEY`
 
-### `time`
+**Required** The pem text of the akash wallet key
 
-The time we greeted you.
+### `AKASH_WALLET_KEY_PASSWORD`
+
+**Required** The password encrypting the wallet key pem
+
+### `AKASH_DEPLOY_CERTIFICATE`
+
+**Required** The deploy certificate pem text
 
 ## Example usage
 
-uses: actions/hello-world-docker-action@v1
-with:
-who-to-greet: 'Mona the Octocat'
+```yaml
+- name: Akash On Github Actions
+  uses: dmikey/akash-on-gh-actions@v1.0.105
+  with:
+    GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+    AKASH_WALLET_KEY: ${{secrets.AKASH_WALLET_KEY}}
+    AKASH_WALLET_KEY_PASSWORD: ${{secrets.AKASH_WALLET_KEY_PASSWORD}}
+    AKASH_DEPLOY_CERTIFICATE: ${{secrets.AKASH_DEPLOY_CERTIFICATE}}
+```
