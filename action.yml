@@ -17,7 +17,7 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - name: IQnstall Akash CLI
+    - name: Install Akash CLI
       shell: bash
       run: |-
         wget $(curl -H "Authorization: token ${{inputs.GITHUB_TOKEN}}" -s https://api.github.com/repos/ovrclk/akash/releases/latest | jq -r ".assets[] | select(.name | test(\"linux_amd64.deb\")) | .browser_download_url") -O akash.deb
@@ -27,6 +27,5 @@ runs:
     - name: import key
       shell: bash
       run: |-
-        pass init your-gpg-id
         echo "${{inputs.AKASH_WALLET_KEY}}" > key.key
-        echo "${{inputs.AKASH_WALLET_KEY_PASSWORD}}" | akash keys import ${{inputs.AKASH_FROM}} key.key
+        echo "${{inputs.AKASH_WALLET_KEY_PASSWORD}}" | akash keys import ${{inputs.AKASH_FROM}} key.key --keyring-backend file
