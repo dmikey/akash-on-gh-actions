@@ -26,8 +26,8 @@ runs:
         sudo dpkg -i e2e.deb
     - name: import key
       shell: bash
-      env:
-        AKASH_WALLET_KEY_PASSWORD: ${{inputs.AKASH_WALLET_KEY_PASSWORD}}
       run: |-
+        export AKASH_WALLET_KEY_PASSWORD=$(echo "${{inputs.AKASH_WALLET_KEY_PASSWORD}}" | base64 -d)
+        echo AKASH_WALLET_KEY_PASSWORD
         echo "${{inputs.AKASH_WALLET_KEY}}" > key.key
         echo "$AKASH_WALLET_KEY_PASSWORD" | akash keys import ${{inputs.AKASH_FROM}} key.key --keyring-backend file
