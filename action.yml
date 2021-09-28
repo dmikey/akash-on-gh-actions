@@ -8,10 +8,10 @@ inputs:
   AKASH_WALLET_KEY_PASSWORD: # id of input
     description: "list of secrets to load"
     required: true
-  AKASH_FROM: # id of input
-    description: "key name of the wallet"
-    required: true
   GITHUB_TOKEN: # id of input
+    description: "github token"
+    required: true
+  AKASH_DEPLOY_CERTIFICATE:
     description: "github token"
     required: true
 runs:
@@ -26,7 +26,13 @@ runs:
         sudo dpkg -i e2e.deb
     - name: import key
       shell: bash
+      env:
+        AKASH_HOME: /home/runner/.akash
       run: |-
-        export AKASH_WALLET_KEY_PASSWORD=$(echo "${{inputs.AKASH_WALLET_KEY_PASSWORD}}" | base64 -d)
         echo "${{inputs.AKASH_WALLET_KEY}}" > key.key
-        echo "${{inputs.AKASH_WALLET_KEY_PASSWORD}}" | akash keys import ${{inputs.AKASH_FROM}} key.key --keyring-backend test
+        echo "${{inputs.AKASH_WALLET_KEY_PASSWORD}}" | akash keys import AKASH_GIT_RUNNER key.key --keyring-backend test
+    - name: import certificate
+      env:
+        AKASH_HOME: /home/runner/.akash
+      shell: bash
+      run: echo "${{inputs.AKASH_DEPLOY_CERTIFICATE}}" > ${{env.AKASH_HOME}}/$(akash keys show AKASH_GIT_RUNNER --output=json | jq -r ".address").pem
